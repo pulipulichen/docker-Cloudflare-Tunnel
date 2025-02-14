@@ -1,0 +1,6 @@
+version: '3.5'
+services:
+  app:
+    build: .
+    # entrypoint: ["/cloudflared", "--url", "http://dify2openai:3000"]
+    
