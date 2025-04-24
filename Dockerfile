@@ -7,7 +7,8 @@ RUN chmod +x /cloudflared
 
 RUN apt-get install -y curl
 
-ENV DELAY_SECONDS=10
+ENV DELAY_SECONDS=30
+ENV RETRY_INTERVAL_SECONDS=10
 
 COPY docker-build/docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh

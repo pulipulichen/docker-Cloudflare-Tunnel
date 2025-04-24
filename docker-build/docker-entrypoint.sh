@@ -8,14 +8,14 @@ fi
 
 # 嘗試連線 nginx，最多重試30次，每次間隔10秒
 for i in {1..30}; do
-    http_code=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL")
+    http_code=$(curl -Ls -o /dev/null -w "%{http_code}" "$TARGET_URL")
     
     if [[ "$http_code" =~ ^2|3 ]]; then
         echo "nginx is reachable."
         break
     else
         echo "Waiting for nginx... ($i)"
-        sleep 10
+        sleep $RETRY_INTERVAL_SECONDS
     fi
 done
 
