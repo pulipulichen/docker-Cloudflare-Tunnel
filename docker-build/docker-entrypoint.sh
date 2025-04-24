@@ -8,7 +8,9 @@ fi
 
 # 嘗試連線 nginx，最多重試30次，每次間隔10秒
 for i in {1..30}; do
-    if curl -s --head $TARGET_URL | grep "200 OK" > /dev/null; then
+    http_code=$(curl -s -o /dev/null -w "%{http_code}" "$TARGET_URL")
+    
+    if [[ "$http_code" =~ ^2|3 ]]; then
         echo "nginx is reachable."
         break
     else
