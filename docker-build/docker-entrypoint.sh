@@ -19,4 +19,6 @@ for i in {1..30}; do
     fi
 done
 
+sleep $DELAY_SECONDS
+
 /cloudflared --url $TARGET_URL
